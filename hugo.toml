@@ -1,4 +1,4 @@
-baseURL = "http://example.org/"
+baseURL = "http://mendelg.tech/"
 languageCode = "en-us"
 title = "Mendel Grabski | Cloud Solution Architect"
 
@@ -33,12 +33,3 @@ title = "Mendel Grabski | Cloud Solution Architect"
     name = "Projects"
     url = "#projects"
     weight = 3
-  [[menu.main]]
-    name = "Articles"
-    url = "#articles"
-    weight = 4
-  [[menu.main]]
-    name = "Speeches"
-    url = "#speeches"
-    weight = 5
-
