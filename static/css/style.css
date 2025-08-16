@@ -34,7 +34,8 @@ nav ul li a:hover { color: var(--accent-color); }
 main { padding-top: 100px; }
 .about {
     display: flex; align-items: center; justify-content: space-between;
-    min-height: calc(100vh - 100px); padding: 100px 0;
+    /* reduce vertical spacing: smaller min-height and less bottom padding */
+    min-height: calc(60vh - 100px); padding: 100px 0 20px;
 }
 .about-text { flex: 0 0 60%; margin: 0; }
 .about-image { flex: 0 0 35%; position: relative; }
@@ -50,7 +51,8 @@ main { padding-top: 100px; }
 }
 .about-image:hover img { filter: none; }
 section {
-    margin-bottom: 150px; opacity: 0; transform: translateY(20px);
+    margin-bottom: 75px; /* reduced from 150px to halve spacing between sections */
+    opacity: 0; transform: translateY(20px);
     transition: opacity 0.5s ease, transform 0.5s ease;
 }
 section.visible { opacity: 1; transform: translateY(0); }
@@ -61,15 +63,16 @@ h1 {
     font-family: 'Poppins', sans-serif;
 }
 h2 {
-    font-size: 2.5rem; margin-bottom: 2rem; position: relative; padding-bottom: 0.5rem;
+    font-size: 2.2rem; margin-bottom: 2rem; position: relative; padding-bottom: 0.5rem;
     font-family: 'Poppins', sans-serif;
+    color: bisque;
 }
 h2::after {
     content: ''; position: absolute; left: 0; bottom: 0; width: 60px; height: 4px;
     background-color: var(--accent-color);
 }
 .subtitle {
-    color: var(--accent-color); font-size: 1.2rem; margin-bottom: 1rem;
+    color: var(--text-color); font-size: 1.2rem; margin-bottom: 1rem;
     font-family: 'Fira Code', monospace;
 }
 .about p { font-size: 1.2rem; margin-bottom: 2rem; max-width: 540px; }
@@ -82,6 +85,7 @@ h2::after {
 .cta-button:hover {
     background-color: rgba(100, 255, 218, 0.1); transform: translateY(-3px);
 }
+.cta-button { margin-top: 10px; margin-bottom: 0; }
 .timeline {
     position: relative; max-width: 1000px; margin: 0 auto;
 }
@@ -136,7 +140,7 @@ footer {
 .emoji { font-size: 1.5em; margin-right: 10px; }
 @media (max-width: 768px) {
     .about {
-        flex-direction: column-reverse; text-align: center; padding: 50px 0;
+        flex-direction: column-reverse; text-align: center; padding: 30px 0;
     }
     .about-text, .about-image { flex: 0 0 100%; }
     .about-image {
@@ -150,6 +154,38 @@ footer {
     }
     .timeline-item::after { left: 15px; }
     .right { left: 0%; }
+    .about h2 { font-size: 1.8rem; white-space: normal; }
+    section { margin-bottom: 40px; } /* smaller spacing on mobile */
+}
+
+/* Break the second phrase of the about H2 onto a new line and size it */
+.about h2 .h2-sub { display: block; font-size: 3rem; margin-top: 0.2rem; }
+
+@media (max-width: 768px) {
+    .about h2 { font-size: 1.6rem; }
+    .about h2 .h2-sub { font-size: 1.2rem; }
+}
+
+/* Reset any custom spacing for the about tagline to site defaults */
+.about h2 {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    line-height: 1.1;
+    position: relative;
+    padding-bottom: 1.0rem; /* reserve space for the accent bar */
+
+    /* force single-line display on larger viewports */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-break: keep-all;
+    color: bisque;
+    /* color: var(--accent-color); */
+}
+
+/* Remove any forced paragraph-top spacing by ensuring default flow */
+.about h2 + p {
+    margin-top: 0; /* rely on h2 margin-bottom for spacing */
 }
 
 .projects-grid, .articles-grid {
@@ -239,11 +275,12 @@ body {
 }
 
 h1, h2, h3 {
-    font-family: 'Fira Code', monospace;
+    font-family: 'Poppins', sans-serif;
 }
 
 p {
     margin-bottom: 1rem;
+    font-family: 'Poppins', sans-serif;
 }
 
 
@@ -260,4 +297,80 @@ p {
     font-size: 0.8rem;
     margin-right: 5px;
     margin-bottom: 5px;
+}
+
+/* Calendly badge widget font override - use monospace CTA font for the badge */
+[class*="calendly"], [class^="calendly"], .calendly-badge-widget, .calendly-badge {
+    font-family: 'Fira Code', monospace !important;
+    font-weight: 600 !important;
+    font-size: 14px !important;
+    color: #ffffff !important;
+}
+
+/* Target badge text specifically if present */
+.calendly-badge-widget .calendly-badge-text,
+.calendly-badge .calendly-badge-text {
+    font-family: 'Fira Code', monospace !important;
+}
+
+/* Compact mini-features under the hero tagline */
+.mini-features { list-style: none; margin: 0.5rem 0 0; padding: 0; display: flex; gap: 1rem; flex-wrap: wrap; }
+.mini-features li { background: rgba(77,44,48,0.5); padding: 6px 10px; border-radius: 6px; color: var(--text-color); font-family: 'Fira Code', monospace; font-size: 0.95rem; }
+/* Force larger spacing under the about tagline (higher specificity + important) */
+.about .about-text > h2 {
+    margin-bottom: 2rem !important; /* align with global h2 spacing */
+    line-height: 1.08;
+}
+.about .about-text > h2 + p {
+    margin-top: 0 !important; /* remove extra forced gap so spacing matches 'Where I\'ve Worked' */
+}
+
+/* Keep the dash attached to the role and allow the company to break to the next line */
+.timeline-content h3 .role { white-space: nowrap; }
+.timeline-content h3 .company { display: inline-block; white-space: normal; }
+
+/* If the title needs to break, allow the company to wrap to the next line cleanly */
+.timeline-content h3 {
+    word-break: break-word;
+}
+
+/* Certifications slider styles (updated: larger logos, reduced end spacing) */
+.certifications { padding: 20px 0; }
+.certifications .cert-slider { overflow: hidden; padding: 0 8px; }
+.certifications .slider-track {
+    display: flex; align-items: center; gap: 24px; /* tightened gap */
+    /* animation moves the duplicated sequence left by 50% to create a seamless loop */
+    animation: cert-scroll 20s linear infinite;
+}
+.certifications .cert-logo {
+    height: 128px; width: auto; display: block; /* doubled from 64px */
+    filter: grayscale(100%); opacity: 0.95;
+    transition: filter var(--transition-speed) ease, transform var(--transition-speed) ease, opacity var(--transition-speed) ease;
+}
+.certifications .cert-logo:hover { filter: none; transform: translateY(-8px); opacity: 1; }
+
+@keyframes cert-scroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+/* Respect users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    .certifications .slider-track { animation: none; }
+}
+
+/* Responsive sizing */
+@media (max-width: 1024px) {
+    .certifications .slider-track { gap: 18px; }
+    .certifications .cert-logo { height: 96px; }
+}
+@media (max-width: 768px) {
+    .certifications .slider-track { gap: 12px; }
+    .certifications .cert-logo { height: 72px; }
+}
+
+/* Utility for accessible hidden headings */
+.visually-hidden {
+    position: absolute !important; height: 1px; width: 1px; overflow: hidden;
+    clip: rect(1px, 1px, 1px, 1px); white-space: nowrap; border: 0; padding: 0; margin: -1px;
 }
