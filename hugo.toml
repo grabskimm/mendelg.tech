@@ -1,6 +1,6 @@
 baseURL = "https://mendelg.tech/"
 languageCode = "en-us"
-title = "Mendel Grabski | Cloud Solution Architect"
+title = "Mendel Grabski | Cloud Security Architect"
 
 [params]
   author = "Mendel Grabski"
@@ -30,6 +30,10 @@ title = "Mendel Grabski | Cloud Solution Architect"
     url = "#experience"
     weight = 2
   [[menu.main]]
+    name = "Certifications"
+    url = "#certifications"
+    weight = 3
+  [[menu.main]]
     name = "Projects"
     url = "#projects"
-    weight = 3
+    weight = 4
