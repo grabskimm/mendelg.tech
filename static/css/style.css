@@ -393,7 +393,7 @@ p {
     .certifications .cert-logo { height: 72px; }
 }
 
-/* "Partnerships" — a sub-section within Projects: compact numbered partner cards */
+/* "Contributions" — a light sub-section within Projects */
 .partners-subsection { margin-top: 3.5rem; }
 .subsection-title {
     font-family: 'Poppins', sans-serif; font-size: 1.35rem; font-weight: 600;
@@ -413,10 +413,11 @@ p {
 .partner-card {
     position: relative; overflow: hidden;
     display: flex; flex-direction: column; gap: 4px;
-    padding: 16px 18px; border-radius: 8px;
-    background-color: var(--card-background); border: 1px solid transparent;
+    padding: 13px 16px; border-radius: 8px;
+    background-color: color-mix(in srgb, var(--card-background) 40%, transparent);
+    border: 1px solid color-mix(in srgb, var(--heading-color) 10%, transparent);
     text-decoration: none; color: var(--heading-color);
-    transition: transform var(--transition-speed) ease, border-color var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+    transition: transform var(--transition-speed) ease, border-color var(--transition-speed) ease, background-color var(--transition-speed) ease;
 }
 .partner-card::before {
     content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
@@ -425,15 +426,12 @@ p {
     transition: transform var(--transition-speed) ease;
 }
 a.partner-card:hover {
-    transform: translateY(-4px); border-color: color-mix(in srgb, var(--accent-color) 25%, transparent);
-    box-shadow: 0 12px 24px -16px rgba(2, 12, 27, 0.8);
+    transform: translateY(-3px);
+    border-color: color-mix(in srgb, var(--accent-color) 40%, transparent);
+    background-color: color-mix(in srgb, var(--card-background) 60%, transparent);
 }
 a.partner-card:hover::before { transform: scaleX(1); }
 a.partner-card:focus-visible { outline: 2px solid var(--accent-color); outline-offset: 2px; }
-.partner-num {
-    font-family: 'Fira Code', monospace; font-size: 0.78rem;
-    color: var(--accent-color); opacity: 0.85;
-}
 .partner-name {
     font-family: 'Fira Code', monospace; font-size: 0.98rem; font-weight: 600;
     color: var(--heading-color);
