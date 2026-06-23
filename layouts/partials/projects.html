@@ -3,8 +3,18 @@
     <div class="projects-grid">
         {{ range sort (where .Site.RegularPages "Type" "projects") "Params.weight" }}
         <div class="project-card">
-            <h3>
+            <div class="project-card-top">
                 <span class="emoji">{{ .Params.emoji }}</span>
+                <div class="project-card-links">
+                    {{ with .Params.github_repo }}
+                    <a href="{{ . }}" target="_blank" rel="noopener noreferrer" aria-label="View source on GitHub" title="View source on GitHub"><i class="fab fa-github" aria-hidden="true"></i></a>
+                    {{ end }}
+                    {{ with .Params.live_url }}
+                    <a href="{{ . }}" target="_blank" rel="noopener noreferrer" aria-label="Visit live site" title="Visit live site"><i class="fas fa-globe" aria-hidden="true"></i></a>
+                    {{ end }}
+                </div>
+            </div>
+            <h3>
                 <a href="{{ .Params.github_repo }}" target="_blank" rel="noopener noreferrer">{{ .Title }}</a>
             </h3>
             <p>{{ .Params.description }}</p>
@@ -13,11 +23,6 @@
                 <span class="tag">{{ . }}</span>
                 {{ end }}
             </div>
-            {{ with .Params.live_url }}
-            <div class="project-links">
-                <a href="{{ . }}" target="_blank" rel="noopener noreferrer" class="project-link">Visit site &rarr;</a>
-            </div>
-            {{ end }}
         </div>
         {{ end }}
     </div>
