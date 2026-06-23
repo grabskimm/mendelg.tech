@@ -13,6 +13,11 @@
                 <span class="tag">{{ . }}</span>
                 {{ end }}
             </div>
+            {{ with .Params.live_url }}
+            <div class="project-links">
+                <a href="{{ . }}" target="_blank" rel="noopener noreferrer" class="project-link">Visit site &rarr;</a>
+            </div>
+            {{ end }}
         </div>
         {{ end }}
     </div>
