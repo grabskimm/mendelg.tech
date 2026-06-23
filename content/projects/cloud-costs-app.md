@@ -1,7 +1,7 @@
 ---
 title: "Cloud Costs Dashboard"
 date: 2024-07-01
-draft: false
+draft: true
 emoji: "💰"
 github_repo: "https://github.com/grabskimm/cloud-costs-dashboard"
 description: "Customized Azure Cloud Costs Dashboard | Lead strategic centralized cost management and optimization efforts. "
