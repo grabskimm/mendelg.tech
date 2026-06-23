@@ -8,15 +8,19 @@ title = "Mendel Grabski | Cloud Security Architect"
   linkedin = "https://www.linkedin.com/in/mendel-grabski/"
 
   # Repositories and sites partnered with in the past.
-  # NOTE: placeholder entries — replace name/url with the real list when provided.
+  # NOTE: placeholder entries — replace name/note/url with the real list when provided.
+  # `note` is a short context line (the relationship or what the project is).
   [[params.partners]]
     name = "Partner Project One"
+    note = "Open-source collaboration"
     url = "#"
   [[params.partners]]
     name = "Partner Project Two"
+    note = "Design & brand studio"
     url = "#"
   [[params.partners]]
     name = "Partner Project Three"
+    note = "Infrastructure & tooling"
     url = "#"
 
 [taxonomies]
