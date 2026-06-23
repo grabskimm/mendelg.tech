@@ -7,6 +7,18 @@ title = "Mendel Grabski | Cloud Security Architect"
   github = "https://github.com/grabskimm"
   linkedin = "https://www.linkedin.com/in/mendel-grabski/"
 
+  # Repositories and sites partnered with in the past.
+  # NOTE: placeholder entries — replace name/url with the real list when provided.
+  [[params.partners]]
+    name = "Partner Project One"
+    url = "#"
+  [[params.partners]]
+    name = "Partner Project Two"
+    url = "#"
+  [[params.partners]]
+    name = "Partner Project Three"
+    url = "#"
+
 [taxonomies]
   tag = "tags"
   category = "categories"
