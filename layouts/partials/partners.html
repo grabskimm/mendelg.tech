@@ -4,9 +4,15 @@
     <ul class="partners-list">
         {{ range .Site.Params.partners }}
         <li>
+            {{ if and .url (ne .url "#") }}
             <a href="{{ .url }}" target="_blank" rel="noopener noreferrer">
                 <i class="fas fa-link" aria-hidden="true"></i>{{ .name }}
             </a>
+            {{ else }}
+            <span class="partner-placeholder" aria-disabled="true" title="Coming soon">
+                <i class="fas fa-link" aria-hidden="true"></i>{{ .name }}
+            </span>
+            {{ end }}
         </li>
         {{ end }}
     </ul>

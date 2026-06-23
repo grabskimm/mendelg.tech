@@ -400,7 +400,8 @@ p {
     display: flex; flex-wrap: wrap; gap: 12px;
 }
 .partners-list li { margin: 0; }
-.partners-list li a {
+.partners-list li a,
+.partners-list li .partner-placeholder {
     display: inline-flex; align-items: center; gap: 8px;
     font-family: 'Fira Code', monospace; font-size: 0.9rem; font-weight: 500;
     color: var(--heading-color); text-decoration: none;
@@ -408,10 +409,17 @@ p {
     padding: 8px 16px; border-radius: 999px;
     transition: color var(--transition-speed) ease, border-color var(--transition-speed) ease, transform var(--transition-speed) ease;
 }
-.partners-list li a:hover {
+.partners-list li a:hover,
+.partners-list li a:focus-visible {
     color: var(--accent-color); border-color: var(--accent-color); transform: translateY(-2px);
+    outline: none;
 }
-.partners-list li a i { font-size: 0.8rem; color: var(--accent-color); }
+.partners-list li a:focus-visible { outline: 2px solid var(--accent-color); outline-offset: 2px; }
+.partners-list li a i,
+.partners-list li .partner-placeholder i { font-size: 0.8rem; color: var(--accent-color); }
+/* Placeholder chips (no real URL yet) read as non-interactive. */
+.partners-list li .partner-placeholder { opacity: 0.55; cursor: default; }
+.partners-list li .partner-placeholder i { color: var(--text-color); }
 
 /* Utility for accessible hidden headings */
 .visually-hidden {
