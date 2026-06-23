@@ -299,6 +299,22 @@ p {
     margin-bottom: 5px;
 }
 
+.project-links {
+    margin-top: 15px;
+}
+
+.project-link {
+    font-family: 'Fira Code', monospace;
+    font-size: 0.85rem;
+    color: var(--accent-color);
+    text-decoration: none;
+    transition: opacity var(--transition-speed) ease;
+}
+
+.project-link:hover {
+    opacity: 0.75;
+}
+
 /* Calendly badge widget font override - use monospace CTA font for the badge */
 [class*="calendly"], [class^="calendly"], .calendly-badge-widget, .calendly-badge {
     font-family: 'Fira Code', monospace !important;
