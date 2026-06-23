@@ -393,33 +393,50 @@ p {
     .certifications .cert-logo { height: 72px; }
 }
 
-/* "Projects, Continued" — a light list of partner repos/sites */
+/* "Projects, Continued" — compact numbered partner cards */
 .partners-intro { max-width: 640px; margin-bottom: 1.5rem; }
-.partners-list {
-    list-style: none; padding: 0; margin: 0;
-    display: flex; flex-wrap: wrap; gap: 12px;
+.partners-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 220px), 1fr));
+    gap: 16px;
 }
-.partners-list li { margin: 0; }
-.partners-list li a,
-.partners-list li .partner-placeholder {
-    display: inline-flex; align-items: center; gap: 8px;
-    font-family: 'Fira Code', monospace; font-size: 0.9rem; font-weight: 500;
-    color: var(--heading-color); text-decoration: none;
+.partner-card {
+    position: relative; overflow: hidden;
+    display: flex; flex-direction: column; gap: 4px;
+    padding: 16px 18px; border-radius: 8px;
     background-color: var(--card-background); border: 1px solid transparent;
-    padding: 8px 16px; border-radius: 999px;
-    transition: color var(--transition-speed) ease, border-color var(--transition-speed) ease, transform var(--transition-speed) ease;
+    text-decoration: none; color: var(--heading-color);
+    transition: transform var(--transition-speed) ease, border-color var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
 }
-.partners-list li a:hover,
-.partners-list li a:focus-visible {
-    color: var(--accent-color); border-color: var(--accent-color); transform: translateY(-2px);
-    outline: none;
+.partner-card::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+    background: linear-gradient(to right, var(--accent-color), transparent);
+    transform: scaleX(0); transform-origin: left;
+    transition: transform var(--transition-speed) ease;
 }
-.partners-list li a:focus-visible { outline: 2px solid var(--accent-color); outline-offset: 2px; }
-.partners-list li a i,
-.partners-list li .partner-placeholder i { font-size: 0.8rem; color: var(--accent-color); }
-/* Placeholder chips (no real URL yet) read as non-interactive. */
-.partners-list li .partner-placeholder { opacity: 0.55; cursor: default; }
-.partners-list li .partner-placeholder i { color: var(--text-color); }
+a.partner-card:hover {
+    transform: translateY(-4px); border-color: color-mix(in srgb, var(--accent-color) 25%, transparent);
+    box-shadow: 0 12px 24px -16px rgba(2, 12, 27, 0.8);
+}
+a.partner-card:hover::before { transform: scaleX(1); }
+a.partner-card:focus-visible { outline: 2px solid var(--accent-color); outline-offset: 2px; }
+.partner-num {
+    font-family: 'Fira Code', monospace; font-size: 0.78rem;
+    color: var(--accent-color); opacity: 0.85;
+}
+.partner-name {
+    font-family: 'Fira Code', monospace; font-size: 0.98rem; font-weight: 600;
+    color: var(--heading-color);
+}
+.partner-note { font-size: 0.82rem; line-height: 1.4; color: var(--text-color); }
+.partner-arrow {
+    position: absolute; top: 16px; right: 16px; font-size: 0.8rem;
+    color: var(--text-color); opacity: 0; transform: translate(-4px, 2px);
+    transition: opacity var(--transition-speed) ease, transform var(--transition-speed) ease, color var(--transition-speed) ease;
+}
+a.partner-card:hover .partner-arrow { opacity: 1; transform: translate(0, 0); color: var(--accent-color); }
+/* Placeholder cards (no real URL yet) read as non-interactive. */
+.partner-card--placeholder { opacity: 0.5; cursor: default; }
 
 /* Utility for accessible hidden headings */
 .visually-hidden {
