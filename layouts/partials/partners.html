@@ -1,0 +1,19 @@
+<section id="partners" class="partners">
+    <h2>Projects, Continued</h2>
+    <p class="partners-intro">Repositories and sites I've partnered with in the past.</p>
+    <ul class="partners-list">
+        {{ range .Site.Params.partners }}
+        <li>
+            {{ if and .url (ne .url "#") }}
+            <a href="{{ .url }}" target="_blank" rel="noopener noreferrer">
+                <i class="fas fa-link" aria-hidden="true"></i>{{ .name }}
+            </a>
+            {{ else }}
+            <span class="partner-placeholder" aria-disabled="true" title="Coming soon">
+                <i class="fas fa-link" aria-hidden="true"></i>{{ .name }}
+            </span>
+            {{ end }}
+        </li>
+        {{ end }}
+    </ul>
+</section>

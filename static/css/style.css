@@ -7,6 +7,7 @@
 /* #270404 */
 * { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; scroll-padding-top: 90px; }
+html, body { overflow-x: hidden; }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
 body {
     font-family: 'Poppins', sans-serif; line-height: 1.6; color: var(--text-color);
@@ -122,7 +123,7 @@ h2::after {
     transform: translateY(-5px); box-shadow: 0 6px 15px rgba(2, 12, 27, 0.8);
 }
 .projects-grid {
-    display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 30px;
 }
 .project-card {
     background-color: var(--card-background); border-radius: 6px; padding: 25px;
@@ -199,7 +200,7 @@ footer {
 
 .projects-grid, .articles-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
     gap: 30px;
 }
 
@@ -392,17 +393,48 @@ p {
     .certifications .cert-logo { height: 72px; }
 }
 
+/* "Projects, Continued" — a light list of partner repos/sites */
+.partners-intro { max-width: 640px; margin-bottom: 1.5rem; }
+.partners-list {
+    list-style: none; padding: 0; margin: 0;
+    display: flex; flex-wrap: wrap; gap: 12px;
+}
+.partners-list li { margin: 0; }
+.partners-list li a,
+.partners-list li .partner-placeholder {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-family: 'Fira Code', monospace; font-size: 0.9rem; font-weight: 500;
+    color: var(--heading-color); text-decoration: none;
+    background-color: var(--card-background); border: 1px solid transparent;
+    padding: 8px 16px; border-radius: 999px;
+    transition: color var(--transition-speed) ease, border-color var(--transition-speed) ease, transform var(--transition-speed) ease;
+}
+.partners-list li a:hover,
+.partners-list li a:focus-visible {
+    color: var(--accent-color); border-color: var(--accent-color); transform: translateY(-2px);
+    outline: none;
+}
+.partners-list li a:focus-visible { outline: 2px solid var(--accent-color); outline-offset: 2px; }
+.partners-list li a i,
+.partners-list li .partner-placeholder i { font-size: 0.8rem; color: var(--accent-color); }
+/* Placeholder chips (no real URL yet) read as non-interactive. */
+.partners-list li .partner-placeholder { opacity: 0.55; cursor: default; }
+.partners-list li .partner-placeholder i { color: var(--text-color); }
+
 /* Utility for accessible hidden headings */
 .visually-hidden {
     position: absolute !important; height: 1px; width: 1px; overflow: hidden;
     clip: rect(1px, 1px, 1px, 1px); white-space: nowrap; border: 0; padding: 0; margin: -1px;
 }
 
-/* Keep the nav tidy on small screens: let the links wrap under the brand */
+/* Keep the nav tidy on small screens: center the brand and let the links wrap below it */
 @media (max-width: 768px) {
-    nav { flex-wrap: wrap; row-gap: 8px; }
-    nav ul { flex-wrap: wrap; gap: 6px 16px; }
+    nav { flex-wrap: wrap; justify-content: center; row-gap: 8px; }
+    nav ul { flex-wrap: wrap; justify-content: center; gap: 6px 16px; width: 100%; }
     nav ul li { margin-left: 0; }
     nav ul li a { font-size: 12px; }
     .nav-brand { font-size: 1.15rem; }
+    /* The wrapped header is taller, so push content and anchor targets down to clear it. */
+    main { padding-top: 124px; }
+    html { scroll-padding-top: 124px; }
 }
