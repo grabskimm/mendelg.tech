@@ -415,7 +415,7 @@ p {
     transition: transform var(--transition-speed) ease;
 }
 a.partner-card:hover {
-    transform: translateY(-4px); border-color: rgba(146, 239, 252, 0.25);
+    transform: translateY(-4px); border-color: color-mix(in srgb, var(--accent-color) 25%, transparent);
     box-shadow: 0 12px 24px -16px rgba(2, 12, 27, 0.8);
 }
 a.partner-card:hover::before { transform: scaleX(1); }
