@@ -393,7 +393,17 @@ p {
     .certifications .cert-logo { height: 72px; }
 }
 
-/* "Projects, Continued" — compact numbered partner cards */
+/* "Partnerships" — a sub-section within Projects: compact numbered partner cards */
+.partners-subsection { margin-top: 3.5rem; }
+.subsection-title {
+    font-family: 'Poppins', sans-serif; font-size: 1.35rem; font-weight: 600;
+    color: var(--heading-color); margin-bottom: 0.5rem;
+}
+.subsection-title::before {
+    content: ''; display: inline-block; width: 22px; height: 2px;
+    background-color: var(--accent-color); vertical-align: middle;
+    margin-right: 12px; transform: translateY(-3px);
+}
 .partners-intro { max-width: 640px; margin-bottom: 1.5rem; }
 .partners-grid {
     display: grid;
