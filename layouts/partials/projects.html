@@ -15,7 +15,12 @@
                 </div>
             </div>
             <h3>
-                <a href="{{ .Params.github_repo }}" target="_blank" rel="noopener noreferrer">{{ .Title }}</a>
+                {{ $title := .Title }}
+                {{ with .Params.github_repo }}
+                <a href="{{ . }}" target="_blank" rel="noopener noreferrer">{{ $title }}</a>
+                {{ else }}
+                {{ $title }}
+                {{ end }}
             </h3>
             <p>{{ .Params.description }}</p>
             <div class="tags">
