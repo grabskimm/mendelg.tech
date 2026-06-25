@@ -7,8 +7,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Fira+Code:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="/css/style.css">
-    <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
-
 </head>
 <body>
     {{ partial "header.html" . }}
@@ -18,8 +16,20 @@
         </div>
     </main>
     {{ partial "footer.html" . }}
+
+    <!-- Booking widget — opens availability.mendelg.tech/book in a popup -->
+    <button type="button" id="book-badge" class="book-badge" aria-haspopup="dialog" aria-controls="book-modal">
+        Schedule time with me
+    </button>
+    <div id="book-modal" class="book-modal" role="dialog" aria-modal="true" aria-label="Book a time" hidden>
+        <div class="book-modal__backdrop" data-book-close></div>
+        <div class="book-modal__dialog">
+            <button type="button" class="book-modal__close" data-book-close aria-label="Close booking">&times;</button>
+            <iframe data-src="https://availability.mendelg.tech/book"
+                    title="Book a time" loading="lazy"></iframe>
+        </div>
+    </div>
+
     <script src="/js/main.js"></script>
-    <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
-    <script type="text/javascript">window.onload = function() { Calendly.initBadgeWidget({ url: 'https://calendly.com/mendel-mendelg/30min?hide_gdpr_banner=1', text: 'Schedule time with me', color: '#15335f', textColor: '#ffffff', branding: true }); }</script>
 </body>
 </html>
