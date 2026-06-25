@@ -1,5 +1,5 @@
 ---
-title: "Cal-Central"
+title: "CalHub"
 date: 2026-06-24
 draft: false
 emoji: "📅"
