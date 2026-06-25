@@ -37,4 +37,25 @@ document.addEventListener('DOMContentLoaded', function() {
     sections.forEach(section => {
         if (section.id) spyObserver.observe(section);
     });
+
+    // Booking widget: open the availability.mendelg.tech booking page in a popup.
+    const bookBadge = document.getElementById('book-badge');
+    const bookModal = document.getElementById('book-modal');
+    if (bookBadge && bookModal) {
+        const frame = bookModal.querySelector('iframe');
+        const openBook = () => {
+            if (frame && !frame.src) frame.src = frame.dataset.src; // lazy-load on first open
+            bookModal.hidden = false;
+            document.body.style.overflow = 'hidden';
+        };
+        const closeBook = () => {
+            bookModal.hidden = true;
+            document.body.style.overflow = '';
+        };
+        bookBadge.addEventListener('click', openBook);
+        bookModal.querySelectorAll('[data-book-close]').forEach(el => el.addEventListener('click', closeBook));
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && !bookModal.hidden) closeBook();
+        });
+    }
 });
