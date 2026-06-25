@@ -325,14 +325,20 @@ p {
 
 /* Booking widget — floating badge + popup that embeds availability.mendelg.tech/book */
 .book-badge {
-    position: fixed; right: 20px; bottom: 20px; z-index: 1000;
+    position: fixed; right: 24px; bottom: 24px; z-index: 1200;
+    display: inline-flex; align-items: center; gap: 10px;
     background-color: #15335f; color: #ffffff;
     font-family: 'Fira Code', monospace; font-weight: 600; font-size: 14px;
-    border: none; border-radius: 999px; padding: 12px 22px; cursor: pointer;
-    box-shadow: 0 8px 24px -8px rgba(2, 12, 27, 0.7);
-    transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+    border: 1px solid color-mix(in srgb, var(--accent-color) 35%, transparent);
+    border-radius: 999px; padding: 13px 22px; cursor: pointer;
+    box-shadow: 0 10px 30px -10px rgba(2, 12, 27, 0.85);
+    transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease, background-color var(--transition-speed) ease;
 }
-.book-badge:hover { transform: translateY(-2px); box-shadow: 0 12px 28px -8px rgba(2, 12, 27, 0.8); }
+.book-badge i { color: var(--accent-color); font-size: 15px; }
+.book-badge:hover {
+    transform: translateY(-2px); background-color: #1b3f72;
+    box-shadow: 0 14px 34px -10px rgba(2, 12, 27, 0.9);
+}
 .book-badge:focus-visible { outline: 2px solid var(--accent-color); outline-offset: 3px; }
 
 .book-modal {
